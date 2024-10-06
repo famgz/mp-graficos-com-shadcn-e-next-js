@@ -1,43 +1,37 @@
-import logoIcon from '@/assets/icons/logo.svg';
-import calendarIcon from '@/assets/icons/calendar.svg';
-import flagIcon from '@/assets/icons/flag.svg';
-import mapIcon from '@/assets/icons/map.svg';
-import Image from 'next/image';
-import NavButton from '@/components/nav-button';
+import CalendarIcon from '@/assets/icons/calendar';
+import FlagIcon from '@/assets/icons/flag';
+import LogoIcon from '@/assets/icons/logo';
+import MapIcon from '@/assets/icons/map';
 
 export default function Header() {
   return (
-    <header className='mb-12 flex justify-between'>
-      <div className='flex items-center gap-4'>
-        <Image src={logoIcon} alt='logo' width={70} height={70} />
-        <div className='flex flex-col'>
-          <h1 className='text-3xl font-bold mb-1'>
+    <header className="flex-center mb-12 flex-col gap-10 lg:flex-row">
+      <div className="flex items-center gap-4">
+        <LogoIcon />
+        <div className="flex flex-col">
+          <h1 className="mb-1 text-3xl font-bold">
             Gastos dos Senadores Brasileiros
           </h1>
           <p>Gastos dos Senadores Brasileiros total por estado (UF) - CEAPS</p>
         </div>
       </div>
 
-      <nav className='flex gap-6'>
-        <div className='border-r-2 pr-6 '>
-          <NavButton
-            imageSrc={calendarIcon}
-            imageAlt='icone calendario'
-            title='Calendário'
-          />
+      <nav className="flex gap-6">
+        <div className="border-r-2 pr-6">
+          <button className="flex-center flex-col gap-2 rounded-lg border-2 fill-slate-500 px-4 py-3 text-xs">
+            <CalendarIcon />
+            Calendario
+          </button>
         </div>
-        <div className='flex gap-4'>
-          <NavButton
-            imageSrc={mapIcon}
-            imageAlt='icone de mapa'
-            title='Gastos por UF'
-          />
-
-          <NavButton
-            imageSrc={flagIcon}
-            imageAlt='icone de bandeira'
-            title='Gastos por Partido'
-          />
+        <div className="flex gap-4">
+          <button className="flex-center flex-col gap-2 rounded-lg border-2 fill-slate-500 px-4 py-3 text-xs transition-colors hover:border-violet-500 hover:fill-violet-500 hover:text-violet-500">
+            <MapIcon />
+            Gastos por UF
+          </button>
+          <button className="flex-center flex-col gap-2 rounded-lg border-2 fill-slate-500 px-4 py-3 text-xs transition-colors hover:border-violet-500 hover:fill-violet-500 hover:text-violet-500">
+            <FlagIcon />
+            Gastos por Partido
+          </button>
         </div>
       </nav>
     </header>
