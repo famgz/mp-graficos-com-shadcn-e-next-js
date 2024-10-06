@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <header className="flex-center mb-12 flex-col gap-10 lg:flex-row">
       <div className="flex items-center gap-4">
-        <LogoIcon />
+        <LogoIcon className="stroke-slate-500" />
         <div className="flex flex-col">
           <h1 className="mb-1 text-3xl font-bold">
             Gastos dos Senadores Brasileiros
