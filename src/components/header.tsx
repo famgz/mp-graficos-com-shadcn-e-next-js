@@ -12,7 +12,9 @@ export default function Header() {
           <h1 className="mb-1 text-3xl font-bold">
             Gastos dos Senadores Brasileiros
           </h1>
-          <p>Gastos dos Senadores Brasileiros total por estado (UF) - CEAPS</p>
+          <p className="text-left">
+            Gastos dos Senadores Brasileiros total por estado (UF) - CEAPS
+          </p>
         </div>
       </div>
 
