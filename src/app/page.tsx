@@ -3,13 +3,6 @@ import PartyChart from '@/components/party-chart';
 import UFChart from '@/components/uf-chart';
 import { ExpenseType } from '@/types/data';
 
-interface Props {
-  searchParams: {
-    type?: ExpenseType;
-    year?: string;
-  };
-}
-
 function getYear(
   searchParamsYear: string | undefined,
   dataAvailableYears: number[],
@@ -32,8 +25,21 @@ function getYear(
   return searchParamsYearNumber;
 }
 
+interface Props {
+  searchParams: {
+    type?: ExpenseType;
+    year?: string;
+  };
+}
+
+function getType(searchParamType: string | undefined) {
+  const isValidType =
+    searchParamType && ['party', 'uf'].includes(searchParamType);
+  return isValidType ? searchParamType : 'uf';
+}
+
 export default async function Home({ searchParams }: Props) {
-  const expensesType = searchParams.type || 'uf';
+  const expensesType = getType(searchParams.type);
 
   const url = `https://apis.codante.io/senator-expenses/summary/by-${expensesType}`;
   const res = await fetch(url);
@@ -41,15 +47,19 @@ export default async function Home({ searchParams }: Props) {
 
   if (!data) return;
 
-  const dataAvailableYears = data.map((item: { year: string }) =>
-    Number(item.year),
-  );
+  const dataAvailableYears = data
+    .map((item: { year: string }) => Number(item.year))
+    .sort((a: number, b: number) => b - a);
 
   const year = getYear(searchParams.year, dataAvailableYears);
 
   return (
     <main className="container mx-auto p-16">
-      <Header />
+      <Header
+        dataAvailableYears={dataAvailableYears}
+        year={year}
+        type={expensesType}
+      />
       {expensesType === 'uf' ? (
         <UFChart year={year} data={data} />
       ) : (
