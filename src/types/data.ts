@@ -19,3 +19,5 @@ export interface PartyDataWrapper {
   data: PartyData[];
   year: string;
 }
+
+export type ExpenseType = 'uf' | 'party';

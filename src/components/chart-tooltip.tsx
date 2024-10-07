@@ -1,9 +1,9 @@
-import { formatValue } from '@/lib/utils';
+import { formatCurrency, formatValue } from '@/lib/utils';
 
 export default function // eslint-disable-next-line @typescript-eslint/no-explicit-any
 CustomToooltip({ active, payload, label }: any) {
   if (active && payload && payload.length) {
-    const formattedValue = formatValue(payload[0].value);
+    const formattedValue = formatCurrency(payload[0].value);
     return (
       <div className="rounded bg-white/90 p-2">
         <p className="label">

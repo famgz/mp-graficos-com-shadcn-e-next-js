@@ -41,7 +41,7 @@ export default function UFChart({ data, year = 2024 }: Props) {
     <Card>
       <CardHeader>
         <CardTitle className="text-2xl">Gastos por UF</CardTitle>
-        <CardDescription>Dados de 2024</CardDescription>
+        <CardDescription>Dados de {year}</CardDescription>
       </CardHeader>
 
       <CardContent>
