@@ -54,7 +54,7 @@ export default async function Home({ searchParams }: Props) {
   const year = getYear(searchParams.year, dataAvailableYears);
 
   return (
-    <main className="container mx-auto p-16">
+    <main className="container mx-auto p-8">
       <Header
         dataAvailableYears={dataAvailableYears}
         year={year}
